@@ -19,28 +19,28 @@
             overflow: hidden; /* Prevent scrollbars */
         }
         .itinerary-container {
-            display: flex; /* Utilize flexbox for horizontal layout */
-            transition: transform 0.5s ease; /* Smooth transition effect for swiping */
+            display: flex; /* Use flexbox for side-by-side layout */
+            transition: transform 0.5s ease; /* Smooth transition for dragging */
             width: 100%; /* Full width of the container */
-            position: relative; /* For positioning elements accurately */
+            position: relative; /* For absolute positioning of elements */
         }
         .day-box {
-            flex: 0 0 80%; /* Each box occupies 80% of the container width */
+            flex: 0 0 80%; /* Each box takes up 80% of the container width */
             padding: 20px;
-            box-sizing: border-box; /* Ensure padding is included in width */
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for boxes */
-            border-radius: 8px; /* Rounded corners for a softer look */
-            margin-right: 10%; /* Space between boxes for the peek effect */
-            position: relative; /* For internal positioning of elements */
+            box-sizing: border-box; /* Include padding in width */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            border-radius: 8px; /* Rounded corners */
+            margin-right: 10%; /* Space between boxes, allows peek */
+            position: relative; /* For absolute positioning of elements inside */
         }
         .day-box:last-child {
             margin-right: 0; /* Remove margin for the last box */
         }
         .day-box h2 {
-            color: blue; /* Color for headings */
+            color: blue; /* Heading color */
         }
         .day-box p {
-            color: white; /* Color for paragraph text */
+            color: white; /* Text color */
         }
     </style>
 </head>
