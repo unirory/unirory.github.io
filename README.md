@@ -1,4 +1,4 @@
-# unirory.github.io
+# Thailand.github.io
 Thailand April 2025
 14 Day Itinery
 <!DOCTYPE html>
