@@ -67,7 +67,7 @@
         const container = document.querySelector('.itinerary-container');
 
         function updateBoxVisibility() {
-            const translateXValue = -currentIndex * 100; // Move based on current index
+            const translateXValue = -currentIndex * 90; // Move based on current index, 90% width to accommodate peek
             container.style.transform = `translateX(${translateXValue}%)`;
         }
 
@@ -115,3 +115,4 @@
     </script>
 </body>
 </html>
+
