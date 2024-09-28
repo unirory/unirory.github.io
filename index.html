@@ -67,7 +67,7 @@
         const container = document.querySelector('.itinerary-container');
 
         function updateBoxVisibility() {
-            container.style.transform = `translateX(-${currentIndex * 33.33}%)`;
+            container.style.transform = `translateX(-${currentIndex * 100}%)`; // Adjust to show peek
         }
 
         // Swipe functionality for mobile and drag functionality for PC
@@ -112,4 +112,3 @@
     </script>
 </body>
 </html>
-
