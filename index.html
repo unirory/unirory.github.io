@@ -21,16 +21,16 @@
         .itinerary-container {
             display: flex; /* Use flexbox for side-by-side layout */
             transition: transform 0.5s ease; /* Smooth transition for dragging */
-            width: 300%; /* Width enough to accommodate all boxes */
-            transform: translateX(0); /* Start position */
+            width: 100%; /* Full width of the container */
+            position: relative; /* For absolute positioning of elements */
         }
         .day-box {
-            width: 80%; /* Each box takes up 80% of the container */
+            flex: 0 0 80%; /* Each box takes up 80% of the container width */
             padding: 20px;
             box-sizing: border-box; /* Include padding in width */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             border-radius: 8px; /* Rounded corners */
-            margin-right: 5%; /* Space between boxes */
+            margin-right: 10%; /* Space between boxes, allows peek */
             position: relative; /* For absolute positioning of elements inside */
         }
         .day-box:last-child {
@@ -45,6 +45,7 @@
     </style>
 </head>
 <body>
+
     <h1>Thailand My Friends</h1>
     <div class="itinerary-container">
         <div class="day-box" id="day1">
