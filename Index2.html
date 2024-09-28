@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A detailed itinerary for my upcoming trip.">
     <title>My Itinerary</title>
-    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,14 +22,15 @@
             transition: transform 0.5s ease; /* Smooth transition for dragging */
             width: 300%; /* Width enough to accommodate all boxes */
             transform: translateX(0); /* Start position */
+            position: relative; /* For absolute positioning of elements */
         }
         .day-box {
-            width: 80%; /* Each box takes up 80% of the container */
+            width: 90%; /* Each box takes up 90% of the container */
             padding: 20px;
             box-sizing: border-box; /* Include padding in width */
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             border-radius: 8px; /* Rounded corners */
-            margin-right: 20px; /* Spacing between boxes */
+            margin-right: 10%; /* Spacing between boxes, allows peek */
             position: relative; /* For absolute positioning of elements inside */
         }
         .day-box:last-child {
@@ -67,7 +67,8 @@
         const container = document.querySelector('.itinerary-container');
 
         function updateBoxVisibility() {
-            container.style.transform = `translateX(-${currentIndex * 100}%)`; // Adjust to show peek
+            const translateXValue = -currentIndex * 100; // Move based on current index
+            container.style.transform = `translateX(${translateXValue}%)`;
         }
 
         // Swipe functionality for mobile and drag functionality for PC
@@ -95,11 +96,13 @@
         });
 
         function handleSwipe() {
-            if (startX - endX > 50) { // Swipe left
+            const threshold = 50; // Minimum swipe distance to trigger change
+
+            if (startX - endX > threshold) { // Swipe left
                 if (currentIndex < boxes.length - 1) {
                     currentIndex++;
                 }
-            } else if (endX - startX > 50) { // Swipe right
+            } else if (endX - startX > threshold) { // Swipe right
                 if (currentIndex > 0) {
                     currentIndex--;
                 }
