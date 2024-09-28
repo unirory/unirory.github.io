@@ -61,49 +61,30 @@
         </div>
     </div>
 
-    <script>
+        <script>
         let currentIndex = 0; // Start with the first box visible
         const boxes = document.querySelectorAll('.day-box');
         const container = document.querySelector('.itinerary-container');
-        let isSwiping = false; // Flag to prevent rapid swiping
 
         function updateBoxVisibility() {
-            const translateXValue = -currentIndex * 90; // Move based on current index (90% for margin)
+            const translateXValue = -currentIndex * 90; // Move based on current index
             container.style.transform = `translateX(${translateXValue}%)`;
         }
 
-        // Handling swipe events for mobile and drag events for desktop
-        let startX;
-        let endX;
+        // Swipe functionality for mobile
+        let startX = 0;
 
         container.addEventListener('touchstart', (event) => {
-            if (isSwiping) return; // Prevent swiping if already in progress
             startX = event.touches[0].clientX; // Capture the initial touch position
         });
 
         container.addEventListener('touchend', (event) => {
-            if (isSwiping) return; // Prevent swiping if already in progress
-            endX = event.changedTouches[0].clientX; // Capture the final touch position
-            handleSwipe();
+            const endX = event.changedTouches[0].clientX; // Capture the final touch position
+            handleSwipe(startX, endX);
         });
 
-        container.addEventListener('mousedown', (event) => {
-            if (isSwiping) return; // Prevent swiping if already in progress
-            startX = event.clientX; // Capture the initial mouse position
-            container.style.cursor = 'grabbing'; // Change cursor to indicate grabbing
-        });
-
-        container.addEventListener('mouseup', (event) => {
-            if (isSwiping) return; // Prevent swiping if already in progress
-            endX = event.clientX; // Capture the final mouse position
-            handleSwipe();
-            container.style.cursor = 'grab'; // Reset the cursor back
-        });
-
-        function handleSwipe() {
-            const threshold = 50; // Minimum swipe distance to trigger a change
-            
-            isSwiping = true; // Set the flag to prevent further swipes during processing
+        function handleSwipe(startX, endX) {
+            const threshold = 50; // Minimum swipe distance to trigger change
 
             if (startX - endX > threshold) { // Swiping left
                 if (currentIndex < boxes.length - 1) {
@@ -114,13 +95,7 @@
                     currentIndex--;
                 }
             }
-
             updateBoxVisibility();
-
-            // Reset the flag after a short delay to allow for natural pause
-            setTimeout(() => {
-                isSwiping = false; // Allow swiping again
-            }, 300); // 300ms delay before allowing another swipe
         }
 
         // Initialize the visibility of boxes
@@ -128,6 +103,7 @@
     </script>
 </body>
 </html>
+
 
 
 
