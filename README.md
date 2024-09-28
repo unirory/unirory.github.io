@@ -14,7 +14,7 @@ Thailand April 2025
     </style>
 </head>
 <body>
-    <h1>My Itinerary</h1>
+    <h1>My Itinerar</h1>
     <div class="itinerary">
         <h2>Day 1: Arrival</h2>
         <p>Details about your first day.</p>
