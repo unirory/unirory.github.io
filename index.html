@@ -67,7 +67,8 @@
         const container = document.querySelector('.itinerary-container');
 
         function updateBoxVisibility() {
-            container.style.transform = `translateX(-${currentIndex * 100}%)`; // Adjust to show peek
+            const translateXValue = -currentIndex * 100; // Move based on current index
+            container.style.transform = `translateX(${translateXValue}%)`;
         }
 
         // Swipe functionality for mobile and drag functionality for PC
@@ -95,11 +96,13 @@
         });
 
         function handleSwipe() {
-            if (startX - endX > 50) { // Swipe left
+            const threshold = 50; // Minimum swipe distance to trigger change
+
+            if (startX - endX > threshold) { // Swipe left
                 if (currentIndex < boxes.length - 1) {
                     currentIndex++;
                 }
-            } else if (endX - startX > 50) { // Swipe right
+            } else if (endX - startX > threshold) { // Swipe right
                 if (currentIndex > 0) {
                     currentIndex--;
                 }
