@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             background-image: url('Thailand.jpg'); /* Replace with your image file name */
             background-size: cover;
-            background-position: center;
+                        background-position: center;
             background-repeat: no-repeat;
             color: white;
             height: 100vh;
@@ -23,6 +23,7 @@
             transition: transform 0.5s ease; /* Smooth transition for dragging */
             width: 300%; /* Width enough to accommodate all boxes */
             transform: translateX(0); /* Start position */
+            position: relative; /* For absolute positioning of elements */
         }
         .day-box {
             width: 33.33%; /* Each box takes up one-third of the container */
@@ -41,9 +42,6 @@
         }
         .day-box p {
             color: white; /* Text color */
-        }
-        .hidden {
-            display: none; /* Class to hide boxes */
         }
     </style>
 </head>
