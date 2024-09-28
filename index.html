@@ -10,10 +10,15 @@
         body {
             font-family: Arial, sans-serif;
             background-image: url('background.jpg'); /* Replace with your image file name */
-            background-size: cover; /* Cover the entire page */
+            background-size: cover; /* Make the background cover the entire screen */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the background from repeating */
             color: white; /* Default text color */
+            height: 100vh; /* Ensure the body takes the full height of the viewport */
+            margin: 0; /* Remove default margin */
         }
         h1 {
+
             text-align: center;
             color: blue; /* Text color for the main heading */
         }
@@ -42,3 +47,9 @@
 </body>
 </html>
 
+### Key CSS Properties Explained
+- **`background-size: cover;`**: This makes sure the background image covers the entire viewport, scaling it as needed.
+- **`background-position: center;`**: This centers the image in the viewport.
+- **`background-repeat: no-repeat;`**: Ensures the background image doesn't tile if it's smaller than the viewport.
+- **`height: 100vh;`**: Sets the height of the body to the full height of the viewport.
+- **`margin: 0;`**: Removes default body margin, ensuring the background image fills the entire screen.
