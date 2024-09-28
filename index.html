@@ -1,15 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="All the Information for My Friends"> 
-    <!-- Meta description -->
-    <title>Thailand Baby Woop Woop</title><!-- Generic title -->
+    <meta name="description" content="A detailed itinerary for my upcoming trip.">
+    <title>My Itinerary</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('Thailand.jpg'); /* Replace with your image file name */
+            background-image: url('background.jpg'); /* Replace with your image file name */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -23,7 +23,6 @@
             transition: transform 0.5s ease; /* Smooth transition for dragging */
             width: 300%; /* Width enough to accommodate all boxes */
             transform: translateX(0); /* Start position */
-            position: relative; /* For absolute positioning of elements */
         }
         .day-box {
             width: 33.33%; /* Each box takes up one-third of the container */
@@ -43,18 +42,26 @@
         .day-box p {
             color: white; /* Text color */
         }
+        .hidden {
+            display: none; /* Class to hide boxes */
+        }
     </style>
 </head>
 <body>
-    <h1>Thailand My Friends</h1>
-    <div class="itinerary">
-        <h2>Flights:</h2>
-        <p>All Flight Details My Friend.</p>
-        <h2>Hotels:</h2>
-        <p>All Hotel Details My Friend.</p>
-        <h2>Activity's : Excursions</h2>
-        <p>All Activitys and Excursions My Friend.</p>
-            </div>
+    <h1>My Itinerary</h1>
+    <div class="itinerary-container">
+        <div class="day-box" id="day1">
+            <h2>Day 1: Arrival</h2>
+            <p>Details about your first day.</p>
+        </div>
+        <div class="day-box hidden" id="day2">
+            <h2>Day 2: Activities</h2>
+            <p>Details about your second day.</p>
+        </div>
+        <div class="day-box hidden" id="day3">
+            <h2>Day 3: Excursions</h2>
+            <p>Details about your third day.</p>
+        </div>
     </div>
 
     <script>
@@ -62,55 +69,28 @@
         const boxes = document.querySelectorAll('.day-box');
         const container = document.querySelector('.itinerary-container');
 
-        function updateBoxVisibility() {
-            container.style.transform = `translateX(-${currentIndex * 33.33}%)`;
-        }
-
-        // Swipe functionality for mobile and drag functionality for PC
-        let startX;
-        let endX;
-
-        container.addEventListener('touchstart', (event) => {
-            startX = event.touches[0].clientX; // Get the initial touch position
-        });
-
-        container.addEventListener('touchend', (event) => {
-            endX = event.changedTouches[0].clientX; // Get the final touch position
-            handleSwipe();
-        });
-
-        container.addEventListener('mousedown', (event) => {
-            startX = event.clientX; // Get the initial mouse position
-            container.style.cursor = 'grabbing'; // Change cursor
-        });
-
-        container.addEventListener('mouseup', (event) => {
-            endX = event.clientX; // Get the final mouse position
-            handleSwipe();
-            container.style.cursor = 'grab'; // Reset cursor
-        });
-
-        function handleSwipe() {
-            if (startX - endX > 50) { // Swipe left
-                if (currentIndex < boxes.length - 1) {
-                    currentIndex++;
-                }
-            } else if (endX - startX > 50) { // Swipe right
-                if (currentIndex > 0) {
-                    currentIndex--;
-                }
+        function showNextBox() {
+            if (currentIndex < boxes.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back to the first
             }
             updateBoxVisibility();
         }
 
-        // Set initial visibility
-        updateBoxVisibility();
+        function updateBoxVisibility() {
+            container.style.transform = `translateX(-${currentIndex * 33.33}%)`;
+            boxes.forEach((box, index) => {
+                box.classList.toggle('hidden', index !== currentIndex && index !== currentIndex + 1);
+            });
+        }
+
+        // Call the function on click or you could use a button or swipe detection for mobile
+        setInterval(showNextBox, 3000); // Automatically move every 3 seconds
     </script>
 </body>
 </html>
 
-</body>
-</html>
 
 
 
