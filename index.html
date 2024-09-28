@@ -10,27 +10,40 @@
         body {
             font-family: Arial, sans-serif;
             background-image: url('Thailand.jpg'); /* Replace with your image file name */
-            background-size: cover; /* Make the background cover the entire screen */
-            background-position: center; /* Center the background image */
-            background-repeat: no-repeat; /* Prevent the background from repeating */
-            color: white; /* Default text color */
-            height: 100vh; /* Ensure the body takes the full height of the viewport */
-            margin: 0; /* Remove default margin */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
         }
-        h1 {
-
-            text-align: center;
-            color: blue; /* Text color for the main heading */
+        .itinerary-container {
+            display: flex; /* Use flexbox for side-by-side layout */
+            transition: transform 0.5s ease; /* Smooth transition for dragging */
+            width: 300%; /* Width enough to accommodate all boxes */
+            transform: translateX(0); /* Start position */
         }
-        .itinerary h2 {
-            color: blue; /* Text color for days */
-            font-weight: bold; /* Make the text bold */
-        }
-        .itinerary {
-            margin: 20px;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+        .day-box {
+            width: 33.33%; /* Each box takes up one-third of the container */
             padding: 20px;
+            box-sizing: border-box; /* Include padding in width */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             border-radius: 8px; /* Rounded corners */
+            margin-right: 10px; /* Spacing between boxes */
+            position: relative; /* For absolute positioning of elements inside */
+        }
+        .day-box:last-child {
+            margin-right: 0; /* Remove margin for the last box */
+        }
+        .day-box h2 {
+            color: blue; /* Heading color */
+        }
+        .day-box p {
+            color: white; /* Text color */
+        }
+        .hidden {
+            display: none; /* Class to hide boxes */
         }
     </style>
 </head>
