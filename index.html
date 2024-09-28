@@ -57,6 +57,34 @@
         <h2>Activity's : Excursions</h2>
         <p>All Activitys and Excursions My Friend.</p>
     </div>
+    </div>
+
+    <script>
+        let currentIndex = 0; // Start with the first box visible
+        const boxes = document.querySelectorAll('.day-box');
+        const container = document.querySelector('.itinerary-container');
+
+        function showNextBox() {
+            if (currentIndex < boxes.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back to the first
+            }
+            updateBoxVisibility();
+        }
+
+        function updateBoxVisibility() {
+            container.style.transform = `translateX(-${currentIndex * 33.33}%)`;
+            boxes.forEach((box, index) => {
+                box.classList.toggle('hidden', index !== currentIndex && index !== currentIndex + 1);
+            });
+        }
+
+        // Call the function on click or you could use a button or swipe detection for mobile
+        setInterval(showNextBox, 3000); // Automatically move every 3 seconds
+    </script>
+</body>
+</html>
 </body>
 </html>
 
