@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hotel details for Thailand trip.">
+    <title>Hotel Details</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to an external CSS -->
+    <style>
+        /* Basic styling for the hotel page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .hotels-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next line */
+            justify-content: space-between; /* Space between items */
+            max-width: 1200px; /* Limit the width of the container */
+            margin: 0 auto; /* Center the container */
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: calc(33.33% - 20px); /* Each card takes up one-third of the container, minus margin */
+            margin-bottom: 20px; /* Space at the bottom for wrapping */
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        img {
+            width: 100%; /* Ensure images take the full width of the card */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 20px); /* Adjust width for smaller screens */
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%; /* Stack cards on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Hotel Details</h1>
+    <div class="hotels-container">
+        <div class="card">
+            <h2>Day 1</h2>
+            <img src="hotel1.jpg" alt="Hotel for Day 1">
+        </div>
+        <div class="card">
+            <h2>Day 2</h2>
+            <img src="hotel2.jpg" alt="Hotel for Day 2">
+        </div>
+        <div class="card">
+            <h2>Day 3</h2>
+            <img src="hotel3.jpg" alt="Hotel for Day 3">
+        </div>
+        <div class="card">
+            <h2>Day 4</h2>
+            <img src="hotel4.jpg" alt="Hotel for Day 4">
+        </div>
+        <div class="card">
+            <h2>Day 5</h2>
+            <img src="hotel5.jpg" alt="Hotel for Day 5">
+        </div>
+        <div class="card">
+            <h2>Day 6</h2>
+            <img src="hotel6.jpg" alt="Hotel for Day 6">
+        </div>
+        <div class="card">
+            <h2>Day 7</h2>
+            <img src="hotel7.jpg" alt="Hotel for Day 7">
+        </div>
+        <div class="card">
+            <h2>Day 8</h2>
+            <img src="hotel8.jpg" alt="Hotel for Day 8">
+        </div>
+        <div class="card">
+            <h2>Day 9</h2>
+            <img src="hotel9.jpg" alt="Hotel for Day 9">
+        </div>
+        <div class="card">
+            <h2>Day 10</h2>
+            <img src="hotel10.jpg" alt="Hotel for Day 10">
+        </div>
+        <div class="card">
+            <h2>Day 11</h2>
+            <img src="hotel11.jpg" alt="Hotel for Day 11">
+        </div>
+        <div class="card">
+            <h2>Day 12</h2>
+            <img src="hotel12.jpg" alt="Hotel for Day 12">
+        </div>
+        <div class="card">
+            <h2>Day 13</h2>
+            <img src="hotel13.jpg" alt="Hotel for Day 13">
+        </div>
+        <div class="card">
+            <h2>Day 14</h2>
+            <img src="hotel14.jpg" alt="Hotel for Day 14">
+        </div>
+        <div class="card">
+            <h2>Day 15</h2>
+            <img src="hotel15.jpg" alt="Hotel for Day 15">
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="index.html" style="text-decoration: none;">
+            <button style="padding: 10px 20px; font-size: 16px; background-color: #0056b3; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Back to Itinerary
+            </button>
+        </a>
+    </div>
+</body>
+</html>
