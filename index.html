@@ -33,6 +33,7 @@
             width: 300%; /* Width enough to accommodate all boxes */
             transform: translateX(0); /* Start position */
             will-change: transform; /* Optimize performance */
+            touch-action: pan-y; /* Allow only vertical scrolling on touch devices */
         }
 
         .day-box {
@@ -84,13 +85,15 @@
             container.style.transform = `translateX(-${currentIndex * 33.33}%)`;
         }
 
-        // Swipe functionality for iOS
-        let startX;
-        let endX;
+        // Swipe functionality for touch devices
+        let startX, endX;
 
         container.addEventListener('touchstart', (event) => {
             startX = event.touches[0].clientX;
-            event.preventDefault(); // Prevent default scrolling
+        });
+
+        container.addEventListener('touchmove', (event) => {
+            event.preventDefault(); // Prevent scrolling during swipe
         });
 
         container.addEventListener('touchend', (event) => {
