@@ -8,22 +8,33 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('Thailand.jpg'); /* Replace with your image file name */
-            background-size: cover;
-                        background-position: center;
-            background-repeat: no-repeat;
             color: white;
             height: 100vh;
             margin: 0;
             overflow: hidden; /* Prevent scrollbars */
+            position: relative; /* For positioning child elements */
         }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Thailand.jpg'); /* Replace with your image file name */
+            background-size: cover;
+            background-position: center;
+            z-index: -1; /* Ensure it stays behind all other content */
+        }
+
         .itinerary-container {
             display: flex; /* Use flexbox for side-by-side layout */
             transition: transform 0.5s ease; /* Smooth transition for dragging */
             width: 300%; /* Width enough to accommodate all boxes */
             transform: translateX(0); /* Start position */
-            position: relative; /* For absolute positioning of elements */
+            will-change: transform; /* Optimize performance */
         }
+
         .day-box {
             width: 33.33%; /* Each box takes up one-third of the container */
             padding: 20px;
@@ -33,35 +44,38 @@
             margin-right: 10px; /* Spacing between boxes */
             position: relative; /* For absolute positioning of elements inside */
         }
+
         .day-box:last-child {
             margin-right: 0; /* Remove margin for the last box */
         }
+
         .day-box h2 {
             color: blue; /* Heading color */
         }
+
         .day-box p {
             color: white; /* Text color */
         }
     </style>
 </head>
 <body>
+    <div class="background"></div> <!-- Background image container -->
     <h1>Thailand My Friends</h1>
     <div class="itinerary-container">
-       
-       <div class="day-box" id="day1">
-    <h2><a href="flights.html" style="color: blue; text-decoration: none;">Flights:</a></h2>
-    <p>All Flight Details My Friend.</p>
+        <div class="day-box" id="day1">
+            <h2><a href="flights.html" style="color: blue; text-decoration: none;">Flights:</a></h2>
+            <p>All Flight Details My Friend.</p>
         </div>
         <div class="day-box hidden" id="day2">
             <h2><a href="Hotels.html" style="color: blue; text-decoration: none;">Hotels:</a></h2>
-        <p>All Hotel Details My Friend.</p>
+            <p>All Hotel Details My Friend.</p>
         </div>
         <div class="day-box hidden" id="day3">
             <h2><a href="Activity's : Excursions.html" style="color: blue; text-decoration: none;">Activitys and Excursions:</a></h2>
-        <p>All Activitys and Excursions My Friend.</p>
+            <p>All Activitys and Excursions My Friend.</p>
         </div>
     </div>
-        <script>
+    <script>
         let currentIndex = 0; // Start with the first box visible
         const boxes = document.querySelectorAll('.day-box');
         const container = document.querySelector('.itinerary-container');
@@ -70,28 +84,29 @@
             container.style.transform = `translateX(-${currentIndex * 33.33}%)`;
         }
 
-        // Swipe functionality for mobile and drag functionality for PC
+        // Swipe functionality for iOS
         let startX;
         let endX;
 
         container.addEventListener('touchstart', (event) => {
-            startX = event.touches[0].clientX; // Get the initial touch position
+            startX = event.touches[0].clientX;
+            event.preventDefault(); // Prevent default scrolling
         });
 
         container.addEventListener('touchend', (event) => {
-            endX = event.changedTouches[0].clientX; // Get the final touch position
+            endX = event.changedTouches[0].clientX;
             handleSwipe();
         });
 
         container.addEventListener('mousedown', (event) => {
-            startX = event.clientX; // Get the initial mouse position
-            container.style.cursor = 'grabbing'; // Change cursor
+            startX = event.clientX;
+            container.style.cursor = 'grabbing';
         });
 
         container.addEventListener('mouseup', (event) => {
-            endX = event.clientX; // Get the final mouse position
+            endX = event.clientX;
             handleSwipe();
-            container.style.cursor = 'grab'; // Reset cursor
+            container.style.cursor = 'grab';
         });
 
         function handleSwipe() {
@@ -112,6 +127,7 @@
     </script>
 </body>
 </html>
+
 
 
 
